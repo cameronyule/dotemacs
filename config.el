@@ -123,8 +123,3 @@
     (insert "#")))
 
 (use-package! typst-ts-mode :mode "\\.typ\\'")
-
-(use-package!
-  elisp-autofmt
-  :hook (emacs-lisp-mode . elisp-autofmt-mode)
-  :config (setq elisp-autofmt-python-bin "python3"))
