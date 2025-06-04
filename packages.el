@@ -70,4 +70,4 @@
   :recipe (:host codeberg :repo "meow_king/typst-ts-mode")
   :pin "972dc69d6b8a3f8983f6b8000654f59c8a8d05ba")
 
-(package! emacs-elisp-autofmt :pin "30c9895f9cb64ac83a53b9f3e78a27f5abca322a")
+(package! elisp-autofmt :pin "30c9895f9cb64ac83a53b9f3e78a27f5abca322a")
