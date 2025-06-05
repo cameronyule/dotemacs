@@ -21,3 +21,7 @@
   typst-ts-mode
   :recipe (:host codeberg :repo "meow_king/typst-ts-mode")
   :pin "972dc69d6b8a3f8983f6b8000654f59c8a8d05ba")
+
+(package!
+  org-super-agenda
+  :pin "fb20ad9c8a9705aa05d40751682beae2d094e0fe")
