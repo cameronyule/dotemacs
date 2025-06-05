@@ -29,6 +29,10 @@
 (setq display-line-numbers-type t)
 
 (setq org-directory "~/Dropbox/Notes")
+
+(setq org-default-notes-file
+  (concat org-directory "/refile.org"))
+
 (setq org-agenda-files
   (list
     org-directory
@@ -37,6 +41,55 @@
     (concat org-directory "/logs")
     (concat org-directory "/projects")
     (concat org-directory "/references")))
+
+(after! org
+  (setq org-todo-keywords
+    (quote ((sequence "TODO(t)" "IN-PROGRESS(p)" "|" "DONE(d)")
+             (sequence "WAITING(w@/!)" "|" "CANCELLED(c@/!)"))))
+  (setq org-capture-templates
+    (quote (("t" "todo" entry (file+headline "refile.org" "Tasks")
+              "* TODO %?\n%U\n%a\n")
+             ("n" "note" entry (file+headline "refile.org" "Notes")
+               "* %? :NOTE:\n%U\n%a\n"))))
+  (setq org-refile-allow-creating-parent-nodes
+    (quote confirm))
+  (setq org-archive-location
+    "archives/%s_archive::* Archived Tasks")
+  (setq org-agenda-time-grid
+    '((daily today)
+    (800 1000 1200 1400 1600 1800)
+    " ┄┄┄┄┄ "
+    "┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄")))
+
+(use-package! org-super-agenda
+  :after org-agenda
+  :config
+  (setq org-super-agenda-header-map (make-sparse-keymap)) ;; Prevent conflicts with doom keybinds
+  (setq org-agenda-custom-commands
+    '(("d" "Day's Agenda"
+        ((agenda ""
+           ((org-agenda-span 'day)
+             (org-agenda-start-day nil)
+             (org-super-agenda-groups
+               '((:name "Today"
+                   :time-grid t
+                   :date today
+                   :deadline today
+                   :scheduled today)
+                  (:discard (:anything t))))))
+          (alltodo ""
+            ((org-agenda-overriding-header "")
+              (org-super-agenda-groups
+                '((:name "Important"
+                    :priority "A")
+                   (:name "Overdue"
+                     :deadline past)
+                   (:name "Reschedule"
+                     :scheduled past)
+                   (:name "Due Soon"
+                     :deadline future
+                     :scheduled future)
+                   (:discard (:anything t)))))))))))
 
 ;;
 ;;; Google Calendar integration via org-gcal
@@ -78,7 +131,6 @@
 
  (after! epa
     (setq epg-pinentry-mode 'ask))
-
 
 ;; Allow Alt-3 to enter # on UK keyboards.
 ;; https://stackoverflow.com/a/4786456
