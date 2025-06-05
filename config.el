@@ -38,12 +38,6 @@
     (concat org-directory "/projects")
     (concat org-directory "/references")))
 
-;; As we install libvterm via Nix, we need to let emacs-libvterm know the Nix store path.
-;; https://github.com/akermu/emacs-libvterm/blob/056ad74653704bc353d8ec8ab52ac75267b7d373/vterm.el#L69
-(setq
-  vterm-module-cmake-args
-  "-DLIBVTERM_INCLUDE_DIR=@libvterm@/include -DLIBVTERM_LIBRARY=@libvterm@/lib/libvterm.dylib")
-
 ;; Allow Alt-3 to enter # on UK keyboards.
 ;; https://stackoverflow.com/a/4786456
 (global-set-key
