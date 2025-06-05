@@ -45,7 +45,7 @@
   (eval +overlay)
   lookup
   (lsp +peek)
-  magit
+  (magit +forge)
   tree-sitter
 
   :os
