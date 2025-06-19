@@ -63,7 +63,7 @@
   (let ((org-gcal-calendar-file (expand-file-name "areas/calendar.org" org-directory)))
         (setq org-gcal-fetch-file-alist `(("cameron@cameronyule.com" . ,org-gcal-calendar-file))))
 
-  (pushnew! auth-sources org-gcal-client-secret-file)
+  (add-to-list 'auth-sources org-gcal-client-secret-file t)
   (setq org-gcal-client-id "844867342453-6dh4t1hs8i3pqv1t1n1r4pjfjk96rv30.apps.googleusercontent.com")
   (setq org-gcal-client-secret (auth-source-pick-first-password :host "org-gcal-secret" :user "client"))
   (org-gcal-reload-client-id-secret))
