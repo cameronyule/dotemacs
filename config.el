@@ -38,6 +38,47 @@
     (concat org-directory "/projects")
     (concat org-directory "/references")))
 
+;;
+;;; Google Calendar integration via org-gcal
+
+(setq org-gcal-auth-source-secrets-dir        (expand-file-name "org-gcal/" doom-cache-dir)
+      org-gcal-client-secret-file             (expand-file-name "oauth-client-secret.gpg" org-gcal-auth-source-secrets-dir)
+      org-gcal-client-secret-file-exists      (file-exists-p org-gcal-client-secret-file)
+      org-gcal-oauth-access-token-file        (expand-file-name "oauth-access-tokens.plist" org-gcal-auth-source-secrets-dir)
+      org-gcal-oauth-access-token-file-exists (file-exists-p org-gcal-oauth-access-token-file))
+
+(unless org-gcal-client-secret-file-exists
+  (warn "org-gcal-client-secret-file not found at %s." org-gcal-client-secret-file))
+(unless org-gcal-oauth-access-token-file-exists
+  (warn "org-gcal-oauth-access-token-file not found at %s." org-gcal-oauth-access-token-file))
+
+(use-package! org-gcal
+  :if org-gcal-client-secret-file-exists
+  :init
+  (setq org-gcal-client-id "PREVENT_WARNING"
+        org-gcal-client-secret "PREVENT_WARNING")
+  :config
+  (require 'auth-source)
+
+  (let ((org-gcal-calendar-file (expand-file-name "areas/calendar.org" org-directory)))
+        (setq org-gcal-fetch-file-alist `(("cameron@cameronyule.com" . ,org-gcal-calendar-file))))
+
+  (pushnew! auth-sources org-gcal-client-secret-file)
+  (setq org-gcal-client-id "844867342453-6dh4t1hs8i3pqv1t1n1r4pjfjk96rv30.apps.googleusercontent.com")
+  (setq org-gcal-client-secret (auth-source-pick-first-password :host "org-gcal-secret" :user "client"))
+  (org-gcal-reload-client-id-secret))
+
+(use-package! oauth2-auto
+  :if org-gcal-oauth-access-token-file-exists
+  :config
+  (require 'plstore)
+  (pushnew! plstore-encrypt-to "37D49EF99EA1E3B1")
+  (setq oauth2-auto-plstore org-gcal-oauth-access-token-file))
+
+ (after! epa
+    (setq epg-pinentry-mode 'ask))
+
+
 ;; Allow Alt-3 to enter # on UK keyboards.
 ;; https://stackoverflow.com/a/4786456
 (global-set-key

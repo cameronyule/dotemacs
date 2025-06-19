@@ -5,6 +5,9 @@
 ;; NOTE 'gd' on a module's name to browse its source code.
 
 (doom!
+  :app
+  calendar
+
   :completion
   (corfu +orderless)
   vertico
@@ -63,4 +66,4 @@
 
   :config
   ;;literate
-  (default +bindings +smartparens))
+  (default +bindings +smartparens +gnupg))
