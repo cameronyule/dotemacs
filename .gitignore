@@ -1,3 +1,7 @@
+
+#
+# Emacs/Elisp
+
 # Compiled
 *.elc
 
@@ -15,3 +19,9 @@ dist/
 
 # Undo-tree save-files
 *.~undo-tree
+
+#
+# Node/npm
+
+# Dependency directories
+node_modules/
