@@ -20,11 +20,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1748929857,
-        "narHash": "sha256-lcZQ8RhsmhsK8u7LIFsJhsLh/pzR9yZ8yqpTzyGdj+Q=",
+        "lastModified": 1750506804,
+        "narHash": "sha256-VLFNc4egNjovYVxDGyBYTrvVCgDYgENp5bVi9fPTDYc=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "c2a03962b8e24e669fb37b7df10e7c79531ff1a4",
+        "rev": "4206c4cb56751df534751b058295ea61357bbbaa",
         "type": "github"
       },
       "original": {
@@ -34,31 +34,10 @@
         "type": "github"
       }
     },
-    "nurpkgs": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1749652694,
-        "narHash": "sha256-t+aUD/ftUkiFouhCM/1H0zYPWVegoCPHhXUdUuFwZvA=",
-        "owner": "cameronyule",
-        "repo": "nurpkgs",
-        "rev": "75e31a760c63692bf2a84efe7a3cd29ea9592cfd",
-        "type": "github"
-      },
-      "original": {
-        "owner": "cameronyule",
-        "repo": "nurpkgs",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "flake-utils": "flake-utils",
         "nixpkgs": "nixpkgs",
-        "nurpkgs": "nurpkgs",
         "treefmt-nix": "treefmt-nix"
       }
     },
