@@ -60,8 +60,9 @@
   :config
   (require 'auth-source)
 
-  (let ((org-gcal-calendar-file (expand-file-name "areas/calendar.org" org-directory)))
-        (setq org-gcal-fetch-file-alist `(("cameron@cameronyule.com" . ,org-gcal-calendar-file))))
+  (setq org-gcal-fetch-file-alist
+    `(("cameron@cameronyule.com" . ,(expand-file-name "areas/calendar.org" org-directory))
+      ("c_8b079369b185ed644058563f8afa7f9dceaba0f3e4b3cf6a75dda7fe6ae0500e@group.calendar.google.com". ,(expand-file-name "areas/family.org" org-directory))))
 
   (add-to-list 'auth-sources org-gcal-client-secret-file t)
   (setq org-gcal-client-id "844867342453-6dh4t1hs8i3pqv1t1n1r4pjfjk96rv30.apps.googleusercontent.com")
