@@ -1,12 +1,31 @@
 _: {
-  projectRootFile = "flake.nix"; # Still relative to the flake root
+  projectRootFile = "flake.nix";
 
   programs = {
-    # keep-sorted start
-    alejandra.enable = true;
-    deadnix.enable = true;
-    keep-sorted.enable = true;
-    statix.enable = true;
+    # keep-sorted start block=yes
+    actionlint = {
+      enable = true;
+      priority = 5;
+    };
+    alejandra = {
+      enable = true;
+      priority = 4;
+    };
+    deadnix = {
+      enable = true;
+      excludes = [
+        "flake.nix"
+      ];
+      priority = 0;
+    };
+    keep-sorted = {
+      enable = true;
+      priority = 3;
+    };
+    statix = {
+      enable = true;
+      priority = 1;
+    };
     # keep-sorted end
   };
 
