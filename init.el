@@ -19,6 +19,7 @@
   modeline
   ophints
   (popup +defaults)
+  tabs
   (vc-gutter +pretty)
   vi-tilde-fringe
   workspaces
