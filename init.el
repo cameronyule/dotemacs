@@ -20,6 +20,7 @@
   ophints
   (popup +defaults)
   tabs
+  treemacs
   (vc-gutter +pretty)
   vi-tilde-fringe
   workspaces
