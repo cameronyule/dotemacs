@@ -65,6 +65,7 @@
   (python +lsp +pyright)
   (rust +tree-sitter +lsp)
   (sh +tree-sitter +lsp)
+  (yaml +tree-sitter)
 
   :config
   ;;literate
