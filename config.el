@@ -18,13 +18,13 @@
   (font-spec :family "FiraCode Nerd Font" :weight 'medium :size 12))
 (setq doom-variable-pitch-font (font-spec :family "ETBembo" :size 16))
 
-(use-package!
-  mixed-pitch
-  :hook ((org-mode . mixed-pitch-mode) (markdown-mode . mixed-pitch-mode))
-  :config (setq mixed-pitch-set-height t))
+;; (use-package!
+;;   mixed-pitch
+;;   :hook ((org-mode . mixed-pitch-mode) (markdown-mode . mixed-pitch-mode))
+;;   :config (setq mixed-pitch-set-height t))
 
-;; https://hieuphay.com/doom-emacs-config/#turn-off-highlighting-current-line
-(add-hook 'text-mode-hook (lambda () (hl-line-mode -1)))
+;; ;; https://hieuphay.com/doom-emacs-config/#turn-off-highlighting-current-line
+;; (add-hook 'text-mode-hook (lambda () (hl-line-mode -1)))
 
 (setq display-line-numbers-type t)
 
