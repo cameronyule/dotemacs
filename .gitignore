@@ -25,3 +25,4 @@ dist/
 
 # Dependency directories
 node_modules/
+.aider*
