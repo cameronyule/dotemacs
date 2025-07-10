@@ -16,6 +16,7 @@
   doom
   doom-dashboard
   hl-todo
+  indent-guides
   modeline
   ophints
   (popup +defaults)
